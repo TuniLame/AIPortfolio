@@ -51,7 +51,7 @@ def show_data():
     bytes_image.seek(0)
 
     #send the file to flask
-    return send_file(base64.b64encode(bytes_image.getvalue()).decode(),mimetype='image/png', max_age=0, as_attachment=True)
+    return send_file(bytes_image.getvalue(),mimetype='image/png', max_age=0, as_attachment=True)
 
 #dynamically generate the efficient frontier plot to flask
 @app.route('/portfolio.png', methods=['GET'])
@@ -69,7 +69,7 @@ def show_optimal_portfolio():
 
     #send the dynamic file to flash
     bytes_obj = bytes_image;
-    return send_file(base64.b64encode(bytes_image.getvalue()).decode(), mimetype='image/png', max_age=0, as_attachment=True)
+    return send_file(bytes_image.getvalue(), mimetype='image/png', max_age=0, as_attachment=True)
 
 #Log distribution is assumed for computational finance
 def calculate_return(data):
